@@ -1,0 +1,3 @@
+CREATE USER 'gnet'@'localhost' IDENTIFIED BY 'gnet_pass_word';
+GRANT ALL PRIVILEGES ON *.* TO 'gnet'@'localhost' WITH GRANT OPTION;
+CREATE DATABASE IF NOT EXISTS gnet
