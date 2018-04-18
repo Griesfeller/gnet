@@ -6,6 +6,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\GnetCustomer;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class GnetCustomerController extends Controller
 {
@@ -33,21 +36,28 @@ class GnetCustomerController extends Controller
     {
         $gnetCustomer = new GnetCustomer();
         $form = $this->createFormBuilder($gnetCustomer)
-            ->add('salutation')
-            ->add('firstName')
-            ->add('lastName')
-            ->add('middleName')
-            ->add('street')
-            ->add('housenumber')
-            ->add('addressAddtitionals')
-            ->add('city')
-            ->add('postalCode')
-            ->add('telephon')
-            ->add('fax')
-            ->add('mobil')
-            ->add('email')->getForm();
+            ->add('salutation', TextType::class)
+            ->add('firstName', TextType::class)
+            ->add('lastName', TextType::class)
+            ->add('middleName', TextType::class)
+            ->add('street', TextType::class)
+            ->add('housenumber', TextType::class)
+            ->add('addressAddtitionals', TextType::class)
+            ->add('city', TextType::class)
+            ->add('postalCode', TextType::class)
+            ->add('telephon', TextType::class)
+            ->add('fax', TextType::class)
+            ->add('mobil', TextType::class)
+            ->add('email', TextType::class)
+            ->add('save', SubmitType::class, array('label' => 'Create Customer'))
+            ->getForm();
             
             if ($form->isSubmitted() && $form->isValid()) {
+                $gnetCustomer = $form->getData();
+                
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($gnetCustomer);
+                $entityManager->flush();
                 return $this->redirectToRoute('task_success');
             }
             

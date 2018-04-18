@@ -117,5 +117,102 @@ class GnetCustomer
         $this->lastName = $lastName;
     }
     
+    public function getMiddleName()
+    {
+        return $this->middleName;
+    }
+    
+    public function setMiddleName($middleName)
+    {
+        $this->middleName = $middleName;
+    }   
+
+    public function getStreet()
+    {
+        return $this->street;
+    }
+    
+    public function setStreet($street)
+    {
+        $this->street = $street;
+    }    
+
+    public function getHousenumber()
+    {
+        return $this->housenumber;
+    }
+    
+    public function setHousenumber($housenumber)
+    {
+        $this->housenumber = $housenumber;
+    }  
+    
+    public function getAddressAddtitionals()
+    {
+        return $this->addressAddtitionals;
+    }
+    
+    public function setAddressAddtitionals($addressAddtitionals)
+    {
+        $this->addressAddtitionals = $addressAddtitionals;
+    }   
+    
+    public function getCity()
+    {
+        return $this->city;
+    }
+    
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }  
+
+    public function getPostalCode()
+    {
+        return $this->postalCode;
+    }
+    
+    public function setPostalCode($postalCode)
+    {
+        $this->postalCode = $postalCode;
+    } 
+
+    public function getTelephon()
+    {
+        return $this->telephon;
+    }
+    
+    public function setTelephon($telephon)
+    {
+        $this->telephon = $telephon;
+    } 
+
+    public function getFax()
+    {
+        return $this->fax;
+    }
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
+    }
+
+    public function getMobil()
+    {
+        return $this->mobil;
+    }
+    public function setMobil($mobil)
+    {
+        $this->mobil = $mobil;
+    }    
+  
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }     
+    
     
 }
