@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\GnetCustomer;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -48,22 +49,25 @@ class GnetCustomerController extends Controller
             ->add('telephon', TextType::class)
             ->add('fax', TextType::class)
             ->add('mobil', TextType::class)
-            ->add('email', TextType::class)
+            ->add('email', EmailType::class)
             ->add('save', SubmitType::class, array('label' => 'Create Customer'))
             ->getForm();
             
-            if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->isSubmitted()) {
                 $gnetCustomer = $form->getData();
                 
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($gnetCustomer);
                 $entityManager->flush();
-                return $this->redirectToRoute('gnet_customer_success');
+                return $this->redirectToRoute('/gnet/customer/success');
             }
             
-        return $this->render('gnet_customer/new.html.twig', array(
-        'form' => $form->createView(),
-        ));
+        return $this->render(
+        'gnet_customer/new.html.twig', 
+            array(
+                'form' => $form->createView(),
+            )
+        );
     }
     
     /**
