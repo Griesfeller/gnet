@@ -58,11 +58,20 @@ class GnetCustomerController extends Controller
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($gnetCustomer);
                 $entityManager->flush();
-                return $this->redirectToRoute('task_success');
+                return $this->redirectToRoute('gnet_customer_success');
             }
             
         return $this->render('gnet_customer/new.html.twig', array(
         'form' => $form->createView(),
         ));
     }
+    
+    /**
+     * @Route("/gnet/customer/success", name="gnet_customer_success")
+     */
+    public function success()
+    {
+        return $this->render('gnet_customer/success.html.twig');
+    }
+    
 }
